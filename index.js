@@ -3,7 +3,16 @@ require("dotenv").config;
 const ccxt = require("ccxt");
 const axios = require("axios");
 
-const tick = async () => {};
+const tick = async () => {
+  const{asset,base,spread,allocation}=config
+  const market= `${asset}/${base}`
+const orders=await binanceClient.fetchOpenOrders(market)
+orders.forEach(async order=>{
+  await binanceClient.cancelOrder(order.id)
+})
+
+
+};
 
 const run = () => {
   const config = {
@@ -20,6 +29,8 @@ const run = () => {
   tick(config, binanceClient);
   setInterval(tick, config.tickInterval, config, binanceClient);
 };
+
+run();
 
 /* var http = require("http");
 
