@@ -11,6 +11,13 @@ orders.forEach(async order=>{
   await binanceClient.cancelOrder(order.id)
 })
 
+const results = await Promise.all({
+  axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd
+  `)
+
+  axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd
+  `)
+})
 
 };
 
