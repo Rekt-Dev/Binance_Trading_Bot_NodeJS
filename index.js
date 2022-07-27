@@ -17,6 +17,8 @@ const run = () => {
     apiKey: AudioProcessingEvent.env.API_ENV,
     secret: process.env.API_SECRET
   });
+  tick(config, binanceClient);
+  setInterval(tick, config.tickInterval, config, binanceClient);
 };
 
 /* var http = require("http");
