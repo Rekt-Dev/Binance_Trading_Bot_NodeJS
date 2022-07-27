@@ -18,8 +18,18 @@ const results = await Promise.all({
   axios.get(`https://api.coingecko.com/api/v3/simple/price?ids=tether&vs_currencies=usd
   `)
 })
-
+const marketPrice=results[0].data.bitcoin.usd/results[1].data.tether.usd
 };
+
+const sellPrice=marketPrice*(1+spread)
+const buyPrice=marketPrice*(1-spread)
+const balances = await binanceClient.fetchBalance()
+const assetBalance=balances.free[base]
+const sellVolume=assetBalance*allocation
+const buyVolume=assetBalance*allocation
+
+await binanceClient.createLimitSellOrder(market,sellVolume.sellPrice)
+await binanceClient.createLimitBuyOrder(market,buyVolume,buyPrice)
 
 const run = () => {
   const config = {
