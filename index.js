@@ -13,6 +13,10 @@ const run = () => {
     spread: 0.2,
     tickInterval: 2000
   };
+  const binanceClient = new ccxt.binance({
+    apiKey: AudioProcessingEvent.env.API_ENV,
+    secret: process.env.API_SECRET
+  });
 };
 
 /* var http = require("http");
