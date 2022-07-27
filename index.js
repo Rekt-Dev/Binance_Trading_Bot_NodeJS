@@ -1,31 +1,4 @@
-require 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+require("dotenv").config;
 
 /* var http = require("http");
 
